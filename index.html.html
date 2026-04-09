@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <style>
+        button{
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            margin-left: 20px;
+            color: white;
+            background-color: black;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button:hover{
+            box-shadow: 0 8px 10px rgba(0,0,0,0.3);
+            transform: scale(1.1);
+        }
+
+        button:active{
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            transform: scale(0.8);
+        }
+
+        #result{
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        body{
+            background-color: rgba(229, 240, 157, 0.484);
+        }
+    </style>
+    <body>
+        your choice: <br>
+        <button onclick="shoot('📄')" class="paper">
+            📄
+        </button>
+        <button onclick="shoot('🥌')" class="rock">
+            🥌
+        </button>
+        <button onclick="shoot('✂')" class="scissors">
+            ✂
+        </button>
+        <br></br>
+        <div id="player"></div><br>
+        <div id="pc"></div><br>
+        <div id="result"></div>
+        <script>
+            function shoot(choice){
+                let pcchoice=["🥌","📄","✂"];
+                let pick=Math.floor(Math.random()*3);
+                let pcpick= pcchoice[pick];
+                let result=""
+                if(
+                    choice===pcpick
+                )
+                {
+                    result="Draw🤝";
+                }
+                else if(
+                    (choice==="🥌" && pcpick==="📄")||
+                    (choice==="📄" && pcpick==="✂")||
+                    (choice==="✂" && pcpick==="🥌")
+                )
+                {
+                        result="You lose😔";
+                }
+                else{
+                    result="You Win!😎";
+                }
+                document.getElementById("result").innerText="Result: "+result;
+                document.getElementById("pc").innerText="pc choice: "+pcpick;
+                document.getElementById("player").innerText="Your choice: "+choice;
+            }
+        </script>
+    </body>
+</html>
